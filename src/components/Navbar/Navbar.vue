@@ -7,7 +7,6 @@
                 <span class="bar"></span>
                 <span class="bar"></span>
             </div>
-            
             <div :class="['nav-links', { 'active': isMenuOpen }]" id="nav-links">
                 <a 
                     v-for="(item, index) in menuItems" 
@@ -48,19 +47,27 @@ const scrollToSection = (id) => {
 </script>
 
 <style scoped>
-body {
-    margin: 0;
-    font-family: 'Courier New', monospace;
-    background-color: #000;
+
+
+.content {
+    padding-top: 80px; 
+}
+
+section {
+    color: #333;
+    text-align: center;
+    margin: 20px;
 }
 
 .navbar {
-    background-color: #c63924;
-    border: 5px solid #0f0;
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
-    padding: 1rem;
-    position: relative;
-    z-index: 10; /* เพิ่ม z-index เพื่อให้แน่ใจว่า navbar อยู่เหนือเนื้อหา */
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+    transition: background-color 0.3s ease;
 }
 
 .container {
@@ -72,10 +79,10 @@ body {
 }
 
 .brand {
-    color: #ffcc00;
+    color: #333;
     font-size: 2rem;
     text-decoration: none;
-    text-shadow: 0 0 5px #ffcc00;
+    font-weight: bold;
 }
 
 .menu-toggle {
@@ -83,27 +90,46 @@ body {
 }
 
 .bar {
-    height: 4px;
-    width: 30px;
-    background-color: #ffcc00;
+    height: 3px;
+    width: 25px;
+    background-color: #333;
     margin: 4px 0;
+    transition: background-color 0.3s;
 }
 
 .nav-links {
     display: flex;
     gap: 1.5rem;
+    position: relative; /* เพื่อให้ ::after ทำงานได้ */
 }
 
 .nav-item {
-    color: #ffcc00;
+    color: #333;
     text-decoration: none;
     padding: 0.5rem 1rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    position: relative; /* ทำให้ ::after ทำงานได้ */
     transition: color 0.3s ease;
 }
 
+.nav-item::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -5px; /* ระยะห่างจากข้อความ */
+    width: 0;
+    height: 2px;
+    background-color: #fa4616; /* สีของเส้น */
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
 .nav-item:hover {
-    color: #fff;
+    color: #fa4616;
+}
+
+.nav-item:hover::after {
+    width: 100%; /* ขยายให้เต็มเมื่อโฮเวอร์ */
+    left: 0; /* เริ่มจากซ้ายสุด */
 }
 
 @media (max-width: 768px) {
@@ -120,10 +146,10 @@ body {
         top: 100%;
         left: 0;
         right: 0;
-        background-color: #c63924;
+        background-color: #ffffff;
         padding: 1rem;
-        box-shadow: 0 4px 10px rgba(0, 255, 0, 0.5);
-        z-index: 5; /* เพิ่ม z-index เพื่อให้เมนูแสดงอยู่เหนือเนื้อหา */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        z-index: 5;
     }
 
     .nav-links.active {
