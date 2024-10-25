@@ -2,30 +2,30 @@
     <div>
         <Navbar />
     </div>
-    <div class="home">
+    <div class="about">
         <Home />
     </div>
     <div>
-        <section id="services">Services</section>
+        <Education />
     </div>
     <div>
-        <section id="about"></section>
+        <section id="reward"></section>
     </div>
     <div>
-        <section id="contact">Contact</section>
+        <section id="certificate">Contact</section>
     </div>
 </template>
 
 <script setup>
 import Navbar from './components/Navbar/Navbar.vue';
 import Home from './components/Home/Home.vue';
+import Education from './components/Education/Education.vue';
 </script>
 
 <style scoped>
-    section {
+section {
     color: #333;
     text-align: center;
     margin: 20px;
-
 }
 </style>

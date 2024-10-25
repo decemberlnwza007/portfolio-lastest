@@ -1,5 +1,5 @@
 <template>
-    <section id="home">
+    <section id="about">
         <div class="nes-container with-title is-rounded">
             <div class="content-container">
                 <div class="text-content">
@@ -62,11 +62,13 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .text-content {
     text-align: left;
     flex: 1;
+    min-width: 300px;
 }
 
 .image-container {
@@ -99,5 +101,38 @@ p {
     justify-content: flex-end;
     align-items: center;
     margin: 5px;
+}
+
+@media (max-width: 768px) {
+    .content-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .text-content {
+        margin-bottom: 20px;
+        min-width: auto;
+    }
+
+    .image-container {
+        margin-left: 0;
+    }
+
+    .profile-image {
+        width: 100%;
+        max-width: 300px; 
+    }
+
+    .head {
+        font-size: 36px; 
+    }
+
+    p {
+        font-size: 1.5rem;
+    }
+
+    #badge {
+        font-size: 16px;
+    }
 }
 </style>
